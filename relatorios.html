@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}
+Relatórios | Gestão de TI
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <span class="eyebrow">GESTÃO E CONTROLE</span>
+        <h1>Relatórios</h1>
+        <p>Consulte o inventário atualizado dos equipamentos de TI.</p>
+    </div>
+
+    <button class="btn" type="button" onclick="window.print()">
+        Imprimir / Salvar em PDF
+    </button>
+</div>
+
+<section class="cards">
+    <div class="card">
+        <span>Total de equipamentos</span>
+        <strong>{{ equipamentos|length }}</strong>
+    </div>
+
+    <div class="card">
+        <span>Em uso</span>
+        <strong>
+            {{ equipamentos|selectattr('status', 'equalto', 'Em Uso')|list|length }}
+        </strong>
+    </div>
+
+    <div class="card">
+        <span>Em manutenção</span>
+        <strong>
+            {{ equipamentos|selectattr('status', 'equalto', 'Em Manutenção')|list|length }}
+        </strong>
+    </div>
+</section>
+
+<section class="panel">
+    <h2>Inventário de equipamentos</h2>
+    <p>Relação dos equipamentos cadastrados no sistema.</p>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patrimônio</th>
+                    <th>Tipo</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Nº de série</th>
+                    <th>Localização</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for equipamento in equipamentos %}
+                    <tr>
+                        <td>{{ equipamento.patrimonio }}</td>
+                        <td>{{ equipamento.tipo }}</td>
+                        <td>{{ equipamento.marca }}</td>
+                        <td>{{ equipamento.modelo }}</td>
+                        <td>{{ equipamento.numero_serie }}</td>
+                        <td>{{ equipamento.localizacao }}</td>
+                        <td>{{ equipamento.status }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">
+                            Nenhum equipamento cadastrado.
+                            <a href="{{ url_for('novo_equipamento') }}">
+                                Cadastrar equipamento
+                            </a>.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div style="margin-top: 20px;">
+    <a href="{{ url_for('inicio') }}">← Voltar ao início</a>
+</div>
+
+{% endblock %}

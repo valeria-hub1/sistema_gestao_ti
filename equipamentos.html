@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+Equipamentos | Gestão de TI
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <span class="eyebrow">INVENTÁRIO DE TI</span>
+        <h1>Equipamentos</h1>
+        <p>Consulte e gerencie os equipamentos cadastrados.</p>
+    </div>
+
+    <a class="btn" href="{{ url_for('novo_equipamento') }}">
+        + Novo equipamento
+    </a>
+</div>
+
+<section class="panel">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Patrimônio</th>
+                    <th>Tipo</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Nº de série</th>
+                    <th>Localização</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for equipamento in equipamentos %}
+                    <tr>
+                        <td>{{ equipamento.id }}</td>
+                        <td>{{ equipamento.patrimonio }}</td>
+                        <td>{{ equipamento.tipo }}</td>
+                        <td>{{ equipamento.marca }}</td>
+                        <td>{{ equipamento.modelo }}</td>
+                        <td>{{ equipamento.numero_serie }}</td>
+                        <td>{{ equipamento.localizacao }}</td>
+                        <td>{{ equipamento.status }}</td>
+                        <td>
+                            <a href="{{ url_for('detalhe_equipamento', id=equipamento.id) }}">
+                                Ver
+                            </a>
+
+                            <span> | </span>
+
+                            <a href="{{ url_for('editar_equipamento', id=equipamento.id) }}">
+                                Editar
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="9">
+                            Nenhum equipamento cadastrado.
+                            <a href="{{ url_for('novo_equipamento') }}">
+                                Cadastrar o primeiro equipamento
+                            </a>.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div style="margin-top: 20px;">
+    <a href="{{ url_for('inicio') }}">← Voltar ao início</a>
+</div>
+
+{% endblock %}

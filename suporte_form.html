@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if suporte %}
+        Editar Suporte | Gestão de TI
+    {% else %}
+        Registrar Suporte | Gestão de TI
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <span class="eyebrow">ATENDIMENTO TÉCNICO</span>
+
+        <h1>
+            {% if suporte %}
+                Editar registro de suporte
+            {% else %}
+                Registrar suporte
+            {% endif %}
+        </h1>
+
+        <p>Registre o atendimento técnico realizado no equipamento.</p>
+    </div>
+</div>
+
+<form method="POST" class="form-card">
+
+    <label>
+        Equipamento
+
+        <select name="id_equipamento" required>
+            <option value="">Selecione o equipamento</option>
+
+            {% for equipamento in equipamentos %}
+                <option
+                    value="{{ equipamento.id }}"
+                    {% if suporte and suporte.id_equipamento == equipamento.id %}
+                        selected
+                    {% endif %}
+                >
+                    {{ equipamento.patrimonio }} -
+                    {{ equipamento.tipo }} -
+                    {{ equipamento.modelo }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+
+    <label>
+        Data do suporte
+
+        <input
+            type="date"
+            name="data_suporte"
+            required
+            value="{{ suporte.data_suporte.strftime('%Y-%m-%d') if suporte and suporte.data_suporte else '' }}"
+        >
+    </label>
+
+    <label>
+        Tipo de suporte
+
+        <select name="tipo_suporte" required>
+            <option value="">Selecione o tipo de suporte</option>
+
+            {% for tipo in [
+                'Manutenção Corretiva',
+                'Manutenção Preventiva',
+                'Atualização de Software',
+                'Troca de Peça',
+                'Suporte Técnico'
+            ] %}
+                <option
+                    value="{{ tipo }}"
+                    {% if suporte and suporte.tipo_suporte == tipo %}
+                        selected
+                    {% endif %}
+                >
+                    {{ tipo }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+
+    <label>
+        Descrição do problema e solução
+
+        <textarea
+            name="descricao"
+            rows="7"
+            required
+        >{{ suporte.descricao if suporte else '' }}</textarea>
+    </label>
+
+    <label>
+        Responsável
+
+        <input
+            type="text"
+            name="responsavel"
+            required
+            value="{{ suporte.responsavel if suporte else '' }}"
+        >
+    </label>
+
+    <label>
+        Custo (R$)
+
+        <input
+            type="number"
+            name="custo"
+            step="0.01"
+            min="0"
+            value="{{ suporte.custo if suporte and suporte.custo is not none else '0.00' }}"
+        >
+    </label>
+
+    <button class="btn" type="submit">
+        Salvar registro
+    </button>
+
+    <a href="{{ url_for('suportes') }}">Cancelar</a>
+
+</form>
+
+{% endblock %}

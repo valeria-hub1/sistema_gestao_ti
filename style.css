@@ -1,0 +1,906 @@
+/* =====================================================
+   SISTEMA DE GESTÃO DE TI
+   IDENTIDADE VISUAL PROFISSIONAL
+===================================================== */
+
+
+/* =====================================================
+   1. FONTES E CONFIGURAÇÕES GERAIS
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #1D4ED8;
+    --primary-dark: #172554;
+    --primary-light: #EFF6FF;
+
+    --background: #F4F6FA;
+    --surface: #FFFFFF;
+
+    --text: #172033;
+    --text-secondary: #64748B;
+    --text-muted: #94A3B8;
+
+    --border: #E5EAF1;
+
+    --success: #16A34A;
+    --warning: #EA580C;
+    --danger: #DC2626;
+
+    --radius: 12px;
+    --shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+a {
+    transition: 0.2s ease;
+}
+
+
+/* =====================================================
+   2. MENU SUPERIOR
+===================================================== */
+
+.topbar {
+    background: var(--primary-dark);
+    color: white;
+    min-height: 76px;
+    padding: 14px 4%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 800;
+    font-size: 18px;
+    color: white;
+}
+
+.brand strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.brand small {
+    display: block;
+    color: #CBD5E1;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.topbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.topbar nav a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #E2E8F0;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    padding: 9px 10px;
+    border-radius: 7px;
+}
+
+.topbar nav a:hover {
+    background: #263D76;
+    color: white;
+}
+
+.topbar nav a i {
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   3. CONTAINER PRINCIPAL
+===================================================== */
+
+.container {
+    width: 90%;
+    max-width: 1320px;
+    margin: 38px auto;
+    min-height: 65vh;
+}
+
+
+/* =====================================================
+   4. APRESENTAÇÃO PRINCIPAL
+===================================================== */
+
+.hero {
+    background: linear-gradient(
+        120deg,
+        #172554,
+        #1E40AF
+    );
+
+    padding: 48px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+
+    color: white;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+
+    right: -80px;
+    top: -120px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+}
+
+.eyebrow {
+    display: block;
+    color: #60A5FA;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.8px;
+
+    margin: 10px 0 14px;
+}
+
+.hero p {
+    max-width: 650px;
+    line-height: 1.8;
+    color: #DBEAFE;
+
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   5. BOTÕES
+===================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    background: var(--surface);
+    color: var(--primary);
+
+    text-decoration: none;
+    border: none;
+
+    padding: 12px 20px;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.btn:hover {
+    background: #DBEAFE;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #DC2626;
+    color: white;
+
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-danger:hover {
+    background: #B91C1C;
+}
+
+
+/* =====================================================
+   6. INDICADORES DO DASHBOARD
+===================================================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: white;
+    padding: 24px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    transition: 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+}
+
+/* Ícones dos indicadores */
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+    font-size: 19px;
+}
+
+.card-icon.blue {
+    background: #DBEAFE;
+    color: #2563EB;
+}
+
+.card-icon.green {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+.card-icon.orange {
+    background: #FFEDD5;
+    color: #EA580C;
+}
+
+.card-icon.purple {
+    background: #F3E8FF;
+    color: #9333EA;
+}
+
+/* Informações dos indicadores */
+
+.card-info {
+    min-width: 0;
+}
+
+.card span,
+.card-info span {
+    display: block;
+    color: var(--text-secondary);
+
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.card strong,
+.card-info strong {
+    display: block;
+    color: var(--primary-dark);
+
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.card-info small {
+    display: block;
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   7. PAINÉIS
+===================================================== */
+
+.panel {
+    background: white;
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.panel h2 {
+    color: var(--primary-dark);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.panel-heading {
+    margin-bottom: 22px;
+}
+
+.panel-heading h2 {
+    margin-bottom: 5px;
+}
+
+.panel-heading p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   8. FUNCIONALIDADES
+===================================================== */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.features > div,
+.feature-card {
+    background: white;
+    padding: 24px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition: 0.25s ease;
+}
+
+.features > div:hover,
+.feature-card:hover {
+    border-color: #93C5FD;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.feature-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.feature-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    border-radius: 11px;
+    font-size: 19px;
+    margin-bottom: 16px;
+}
+
+.features h3,
+.feature-card h3 {
+    color: var(--primary-dark);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.features p,
+.feature-card p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 8px;
+}
+
+.feature-link {
+    display: inline-block;
+    color: var(--primary);
+
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 16px;
+}
+
+
+/* =====================================================
+   9. CABEÇALHOS DAS PÁGINAS
+===================================================== */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.page-header h1 {
+    color: var(--primary-dark);
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   10. TABELAS
+===================================================== */
+
+.table-wrap {
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #F1F5F9;
+    color: #475569;
+
+    padding: 15px;
+    text-align: left;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+
+    font-size: 13px;
+    color: #334155;
+}
+
+td a {
+    color: var(--primary);
+    text-decoration: none;
+
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+tr:hover {
+    background: #F8FAFC;
+}
+
+
+/* =====================================================
+   11. FORMULÁRIOS
+===================================================== */
+
+.form-card {
+    background: white;
+    padding: 32px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.form-card label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+
+    background: white;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.form-card textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.form-card button {
+    width: fit-content;
+}
+
+.form-card > a {
+    color: var(--primary);
+    text-decoration: none;
+    align-self: center;
+}
+
+
+/* =====================================================
+   12. SUPORTE TÉCNICO
+===================================================== */
+
+.support-item {
+    border-left: 4px solid var(--primary);
+
+    padding: 18px 20px;
+    margin-bottom: 16px;
+
+    background: white;
+    border-radius: 8px;
+
+    box-shadow: var(--shadow);
+}
+
+.support-item h3 {
+    color: var(--primary-dark);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.support-item p {
+    margin-bottom: 7px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.inline-form {
+    display: inline;
+}
+
+
+/* =====================================================
+   13. ALERTAS
+===================================================== */
+
+.alert {
+    padding: 15px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.alert.success {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.alert.error {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+
+/* =====================================================
+   14. RODAPÉ
+===================================================== */
+
+footer {
+    text-align: center;
+    background: var(--primary-dark);
+    color: #CBD5E1;
+
+    padding: 24px;
+    margin-top: 50px;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   15. RESPONSIVIDADE
+===================================================== */
+
+/* Tablets e telas médias */
+
+@media (max-width: 1100px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+}
+
+/* Celulares e telas menores */
+
+@media (max-width: 750px) {
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 5%;
+    }
+
+    .topbar nav {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .container {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .hero {
+        padding: 32px 25px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+/* Celulares pequenos */
+
+@media (max-width: 500px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        grid-template-columns: 1fr;
+        padding: 22px;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .topbar nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+    }
+
+    .topbar nav a {
+        font-size: 12px;
+    }
+
+}
+/*
+
+/* =====================================================
+   16. BANNER PRINCIPAL COM IMAGEM
+===================================================== */
+
+.hero {
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    padding: 48px;
+    margin-bottom: 30px;
+
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(7, 24, 57, 0.72) 0%,
+            rgba(7, 24, 57, 0.40) 40%,
+            rgba(7, 24, 57, 0.05) 75%,
+            rgba(7, 24, 57, 0.00) 100%
+        ),
+        url("/static/images/banner_gestao_ti.jpg");
+
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.hero::after {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 540px;
+}
+
+.hero .eyebrow {
+    color: #38BDF8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    color: #FFFFFF;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 10px 0 14px;
+}
+
+.hero p {
+    max-width: 510px;
+    color: #E2E8F0;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.hero .btn {
+    background: #2563EB;
+    color: #FFFFFF;
+    padding: 13px 21px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.hero .btn:hover {
+    background: #1D4ED8;
+    color: #FFFFFF;
+}
+
+@media (max-width: 750px) {
+    .hero {
+        min-height: 350px;
+        padding: 32px 25px;
+        background-position: 65% center;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero {
+        min-height: 360px;
+        padding: 25px 20px;
+        background-position: 65% center;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+}

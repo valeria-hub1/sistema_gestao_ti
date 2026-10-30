@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cadastro de Equipamento | Gestão de TI
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <span class="eyebrow">INVENTÁRIO DE TI</span>
+
+        <h1>
+            {% if equipamento %}
+                Editar equipamento
+            {% else %}
+                Cadastrar equipamento
+            {% endif %}
+        </h1>
+
+        <p>Informe os dados do equipamento.</p>
+    </div>
+</div>
+
+<form method="POST" class="form-card">
+
+    <label>
+        Patrimônio
+        <input
+            type="text"
+            name="patrimonio"
+            required
+            value="{{ equipamento.patrimonio if equipamento else '' }}"
+        >
+    </label>
+
+    <label>
+        Tipo
+        <select name="tipo" required>
+            <option value="">Selecione o tipo</option>
+
+            {% for tipo in [
+                'Notebook',
+                'Computador',
+                'Impressora',
+                'Servidor',
+                'Monitor',
+                'Roteador',
+                'Switch',
+                'Outro'
+            ] %}
+                <option
+                    value="{{ tipo }}"
+                    {% if equipamento and equipamento.tipo == tipo %}
+                        selected
+                    {% endif %}
+                >
+                    {{ tipo }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+
+    <label>
+        Marca
+        <input
+            type="text"
+            name="marca"
+            required
+            value="{{ equipamento.marca if equipamento else '' }}"
+        >
+    </label>
+
+    <label>
+        Modelo
+        <input
+            type="text"
+            name="modelo"
+            required
+            value="{{ equipamento.modelo if equipamento else '' }}"
+        >
+    </label>
+
+    <label>
+        Número de série
+        <input
+            type="text"
+            name="numero_serie"
+            required
+            value="{{ equipamento.numero_serie if equipamento else '' }}"
+        >
+    </label>
+
+    <label>
+        Data de aquisição
+        <input
+            type="date"
+            name="data_aquisicao"
+            required
+            value="{{ equipamento.data_aquisicao.strftime('%Y-%m-%d') if equipamento and equipamento.data_aquisicao else '' }}"
+        >
+        <small>Selecione a data no calendário do campo.</small>
+    </label>
+
+    <label>
+        Localização
+        <input
+            type="text"
+            name="localizacao"
+            required
+            value="{{ equipamento.localizacao if equipamento else '' }}"
+        >
+    </label>
+
+    <label>
+        Status
+        <select name="status" required>
+            {% for status in [
+                'Em Uso',
+                'Em Manutenção',
+                'Desativado',
+                'Descartado'
+            ] %}
+                <option
+                    value="{{ status }}"
+                    {% if equipamento and equipamento.status == status %}
+                        selected
+                    {% elif not equipamento and status == 'Em Uso' %}
+                        selected
+                    {% endif %}
+                >
+                    {{ status }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+
+    <button class="btn" type="submit">
+        Salvar equipamento
+    </button>
+
+    <a href="{{ url_for('listar_equipamentos') }}">Cancelar</a>
+
+</form>
+
+{% endblock %}

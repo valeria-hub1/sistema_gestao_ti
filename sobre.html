@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sobre o Projeto | Gestão de TI
+{% endblock %}
+
+{% block content %}
+
+<section class="panel"></section>
+    <span class="eyebrow">PROJETO INTEGRADOR</span>
+
+    <h1>Sistema de Gestão de Equipamentos de TI</h1>
+
+    <p>
+        Uma aplicação desenvolvida para centralizar o controle
+        dos equipamentos de Tecnologia da Informação de uma empresa.
+    </p>
+
+    <p>
+        O sistema reúne informações sobre patrimônio, características,
+        localização, situação dos equipamentos e histórico de suporte técnico.
+    </p>
+
+   <a class="btn" href="{{ url_for('inicio') }}">
+    Voltar ao início
+</a>
+</section>
+
+<section class="panel">
+    <h2>Objetivo do projeto</h2>
+
+    <p>
+        Melhorar a organização dos ativos de TI, facilitar o acompanhamento
+        do ciclo de vida dos equipamentos e contribuir para uma gestão
+        mais eficiente dos recursos tecnológicos.
+    </p>
+</section>
+
+<section class="panel">
+    <h2>Principais funcionalidades</h2>
+
+    <div class="features">
+        <div>
+            <h3>📦 Cadastro de equipamentos</h3>
+            <p>
+                Registrar patrimônio, tipo, marca, modelo, número de série,
+                data de aquisição, localização e status.
+            </p>
+        </div>
+
+        <div>
+            <h3>🔧 Suporte técnico</h3>
+            <p>
+                Registrar atendimentos, manutenções, responsáveis,
+                descrições e custos.
+            </p>
+        </div>
+
+        <div>
+            <h3>📊 Relatórios</h3>
+            <p>
+                Consultar o inventário e visualizar informações
+                dos equipamentos cadastrados.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="panel">
+    <h2>Importância do sistema</h2>
+
+    <p>
+        A centralização dessas informações ajuda a manter os registros
+        organizados, facilita a consulta dos dados e apoia o planejamento
+        da manutenção dos equipamentos.
+    </p>
+</section>
+
+{% endblock %}

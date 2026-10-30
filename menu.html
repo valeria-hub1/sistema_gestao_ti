@@ -1,0 +1,49 @@
+<header class="topbar">
+    <div class="brand">
+        <div class="logo">
+            <i class="fa-solid fa-laptop"></i>
+        </div>
+
+        <div class="brand-text">
+            <strong>Gestão de Equipamentos</strong>
+            <small>Sistema de Gestão de TI</small>
+        </div>
+    </div>
+
+    <nav>
+        <a href="{{ url_for('inicio') }}">
+            <i class="fa-solid fa-house"></i>
+            Início
+        </a>
+
+        <a href="{{ url_for('listar_equipamentos') }}">
+            <i class="fa-solid fa-computer"></i>
+            Equipamentos
+        </a>
+
+        <a href="{{ url_for('novo_equipamento') }}">
+            <i class="fa-solid fa-plus"></i>
+            Cadastrar
+        </a>
+
+        <a href="{{ url_for('suportes') }}">
+            <i class="fa-solid fa-headset"></i>
+            Suporte
+        </a>
+
+        <a href="{{ url_for('novo_suporte') }}">
+            <i class="fa-solid fa-ticket"></i>
+            Novo suporte
+        </a>
+
+        <a href="{{ url_for('relatorios') }}">
+            <i class="fa-solid fa-chart-column"></i>
+            Relatórios
+        </a>
+
+        <a href="{{ url_for('sobre') }}">
+            <i class="fa-solid fa-circle-info"></i>
+            Sobre
+        </a>
+    </nav>
+</header>

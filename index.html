@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}
+Início | Gestão de TI
+{% endblock %}
+
+{% block content %}
+
+<!-- BANNER PRINCIPAL -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="eyebrow">
+            PAINEL DE CONTROLE
+        </span>
+
+        <h1>
+            Gestão de Equipamentos de TI
+        </h1>
+
+        <p>
+            Gerencie os equipamentos, acompanhe as manutenções
+            e organize os atendimentos técnicos da empresa
+            em uma única plataforma.
+        </p>
+
+        <a class="btn" href="{{ url_for('novo_equipamento') }}">
+            <i class="fa-solid fa-plus"></i>
+            Cadastrar equipamento
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- INDICADORES -->
+<section class="cards">
+
+    <div class="card">
+        <div class="card-icon blue">
+            <i class="fa-solid fa-computer"></i>
+        </div>
+
+        <div class="card-info">
+            <span>Equipamentos</span>
+            <strong>{{ equipamentos }}</strong>
+            <small>Total cadastrado</small>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-icon green">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div class="card-info">
+            <span>Em uso</span>
+            <strong>{{ em_uso }}</strong>
+            <small>Em utilização</small>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-icon orange">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+
+        <div class="card-info">
+            <span>Em manutenção</span>
+            <strong>{{ manutencao }}</strong>
+            <small>Em acompanhamento técnico</small>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-icon purple">
+            <i class="fa-solid fa-headset"></i>
+        </div>
+
+        <div class="card-info">
+            <span>Registros de suporte</span>
+            <strong>{{ suportes }}</strong>
+            <small>Atendimentos registrados</small>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- FUNCIONALIDADES -->
+<section class="panel">
+
+    <div class="panel-heading">
+
+        <span class="eyebrow">
+            RECURSOS DA PLATAFORMA
+        </span>
+
+        <h2>Funcionalidades do sistema</h2>
+
+        <p>
+            Acesse os principais recursos para administrar
+            a infraestrutura tecnológica da empresa.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <!-- EQUIPAMENTOS -->
+        <a href="{{ url_for('listar_equipamentos') }}"
+           class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+
+            <h3>Equipamentos</h3>
+
+            <p>
+                Cadastre, consulte e acompanhe os equipamentos
+                de tecnologia utilizados pela empresa.
+            </p>
+
+            <span class="feature-link">
+                Acessar equipamentos →
+            </span>
+
+        </a>
+
+
+        <!-- SUPORTE -->
+        <a href="{{ url_for('suportes') }}"
+           class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+
+            <h3>Suporte técnico</h3>
+
+            <p>
+                Registre atendimentos, manutenções,
+                substituições de peças e custos.
+            </p>
+
+            <span class="feature-link">
+                Acessar suporte →
+            </span>
+
+        </a>
+
+
+        <!-- RELATÓRIOS -->
+        <a href="{{ url_for('relatorios') }}"
+           class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-chart-column"></i>
+            </div>
+
+            <h3>Relatórios</h3>
+
+            <p>
+                Consulte informações e acompanhe os dados
+                do inventário de equipamentos.
+            </p>
+
+            <span class="feature-link">
+                Consultar relatórios →
+            </span>
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

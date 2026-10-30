@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detalhes do Equipamento | Gestão de TI
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <span class="eyebrow">INVENTÁRIO DE TI</span>
+        <h1>Equipamento {{ equipamento.patrimonio }}</h1>
+        <p>Consulte as informações e o histórico de suporte técnico.</p>
+    </div>
+
+    <a class="btn"
+       href="{{ url_for('editar_equipamento', id=equipamento.id) }}">
+        Editar equipamento
+    </a>
+</div>
+
+<section class="panel">
+    <h2>Dados do equipamento</h2>
+
+    <div class="features">
+        <div>
+            <strong>ID</strong>
+            <p>{{ equipamento.id }}</p>
+        </div>
+
+        <div>
+            <strong>Patrimônio</strong>
+            <p>{{ equipamento.patrimonio }}</p>
+        </div>
+
+        <div>
+            <strong>Tipo</strong>
+            <p>{{ equipamento.tipo }}</p>
+        </div>
+
+        <div>
+            <strong>Marca</strong>
+            <p>{{ equipamento.marca }}</p>
+        </div>
+
+        <div>
+            <strong>Modelo</strong>
+            <p>{{ equipamento.modelo }}</p>
+        </div>
+
+        <div>
+            <strong>Número de série</strong>
+            <p>{{ equipamento.numero_serie }}</p>
+        </div>
+
+        <div>
+            <strong>Data de aquisição</strong>
+            <p>
+                {% if equipamento.data_aquisicao %}
+                    {{ equipamento.data_aquisicao.strftime('%d/%m/%Y') }}
+                {% else %}
+                    Não informada
+                {% endif %}
+            </p>
+        </div>
+
+        <div>
+            <strong>Localização</strong>
+            <p>{{ equipamento.localizacao }}</p>
+        </div>
+
+        <div>
+            <strong>Status</strong>
+            <p>{{ equipamento.status }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="page-header">
+        <div>
+            <h2>Histórico de suporte</h2>
+            <p>Registros de manutenção e atendimento técnico.</p>
+        </div>
+
+        <a class="btn" href="{{ url_for('novo_suporte') }}">
+            + Registrar suporte
+        </a>
+    </div>
+
+    {% for suporte in suportes %}
+        <div class="support-item">
+            <h3>{{ suporte.tipo_suporte }}</h3>
+
+            <p>
+                <strong>Data:</strong>
+                {% if suporte.data_suporte %}
+                    {{ suporte.data_suporte.strftime('%d/%m/%Y') }}
+                {% else %}
+                    Não informada
+                {% endif %}
+            </p>
+
+            <p>
+                <strong>Descrição:</strong>
+                {{ suporte.descricao }}
+            </p>
+
+            <p>
+                <strong>Responsável:</strong>
+                {{ suporte.responsavel }}
+            </p>
+
+            <p>
+                <strong>Custo:</strong>
+                R$ {{ "%.2f"|format(suporte.custo or 0) }}
+            </p>
+        </div>
+    {% else %}
+        <p>Nenhum registro de suporte encontrado para exibir.</p>
+    {% endfor %}
+</section>
+
+<div style="margin-top: 20px;">
+    <a href="{{ url_for('listar_equipamentos') }}">
+        ← Voltar para equipamentos
+    </a>
+</div>
+
+{% endblock %}
